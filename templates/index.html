@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Accueil - Gestion de Prêt de Matériel{% endblock %}
+
+{% block accueil_active %}active{% endblock %}  
+
+{% block content %}
+    <div class="mt-4">
+        <h2>Bienvenue !</h2>
+        <p>Utilisez les onglets ci-dessus pour gérer les enseignants, le matériel, les salles et les emprunts.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Actions rapides :</h3>
+        <a href="{% url 'ajouter_enseignant' %}" class="btn btn-primary">Ajouter un enseignant</a>
+        <a href="{% url 'ajouter_materiel' %}" class="btn btn-primary">Ajouter un matériel</a>
+        <a href="{% url 'enregistrer_passation' %}" class="btn btn-primary">Enregistrer une passation</a>
+    </div>
+{% endblock %}

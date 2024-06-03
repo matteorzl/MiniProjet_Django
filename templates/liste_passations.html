@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des passations{% endblock %}
+
+{% block passations_active %}active{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Liste des passations</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Matériel</th>
+                    <th>De (Enseignant)</th>
+                    <th>À (Enseignant)</th>
+                    <th>Date</th>
+                    <th>Lieu</th>
+                    <th>Occasion</th>
+                    <th>Objectif d'utilisation</th>
+                    <th>Accessoires présents</th>
+                    <th>État des accessoires</th>
+                    <th>Budget Année Courante</th>
+                    <th>Budget Projets</th>
+                    <th>Budget Financements Exceptionnels</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for passation in passations %}
+                    <tr>
+                        <td>{{ passation.materiel }}</td>
+                        <td>{{ passation.de }}</td>
+                        <td>{{ passation.a }}</td>
+                        <td>{{ passation.date }}</td>
+                        <td>{{ passation.lieu }}</td>
+                        <td>{{ passation.occasion }}</td>
+                        <td>{{ passation.objectif_utilisation }}</td>
+                        <td>{{ passation.accessoires_presents }}</td>
+                        <td>{{ passation.etat_accessoires }}</td>
+                        <td>{{ passation.budget_annee_courante }}</td>
+                        <td>{{ passation.budget_projets }}</td>
+                        <td>{{ passation.budget_financements_exceptionnels }}</td> 
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="12">Aucune passation enregistrée.</td> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

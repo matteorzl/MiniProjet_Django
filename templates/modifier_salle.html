@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Modifier la salle{% endblock %}
+
+{% block salles_active %}active{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Modifier la salle : {{ salle.numero }}</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_numero">Numéro de la salle:</label>
+                {{ form.numero }}
+            </div>
+            <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+        </form>
+
+        <div class="mt-3">
+            <a href="{% url 'liste_salles' %}" class="btn btn-secondary">Retour à la liste des salles</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Gestion de Prêt de Matériel{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Gestion de Prêt de Matériel</h1>
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link {% block accueil_active %}{% endblock %}" href="{% url 'index' %}">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% block enseignants_active %}{% endblock %}" href="{% url 'liste_enseignants' %}">Enseignants</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% block materiels_active %}{% endblock %}" href="{% url 'liste_materiels' %}">Matériels</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% block salles_active %}{% endblock %}" href="{% url 'liste_salles' %}">Salles</a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link {% block passations_active %}{% endblock %}" href="{% url 'liste_passations' %}">Passations</a>
+            </li>
+        </ul>
+
+        {% block content %}{% endblock %} 
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

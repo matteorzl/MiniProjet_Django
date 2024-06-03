@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des matériels{% endblock %}
+
+{% block materiels_active %}active{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Liste des matériels</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Accessoires</th>
+                    <th>Acheteur</th>
+                    <th>Responsable</th>
+                    <th>Salle</th>
+                    <th>Possesseur Actuel</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for materiel in materiels %}
+                    <tr>
+                        <td>{{ materiel.nom }}</td>
+                        <td>{{ materiel.accessoires }}</td>
+                        <td>{{ materiel.acheteur }}</td>
+                        <td>{{ materiel.responsable }}</td>
+                        <td>{{ materiel.salle }}</td>
+                        <td>{{ materiel.possesseur }}</td>
+                        <td>
+                            <a href="{% url 'modifier_materiel' materiel.id %}" class="btn btn-sm btn-warning">Modifier</a>
+                            <a href="{% url 'supprimer_materiel' materiel.id %}" class="btn btn-sm btn-danger">Supprimer</a>
+                            <a href="{% url 'enregistrer_passation' %}?materiel={{ materiel.id }}" class="btn btn-sm btn-info">Passation</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="7">Aucun matériel enregistré.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="mt-3">
+            <a href="{% url 'ajouter_materiel' %}" class="btn btn-primary">Ajouter un matériel</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des enseignants{% endblock %}
+
+{% block enseignants_active %}active{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Liste des enseignants</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for enseignant in enseignants %}
+                    <tr>
+                        <td>{{ enseignant.nom }}</td>
+                        <td>{{ enseignant.prenom }}</td>
+                        <td>
+                            <a href="{% url 'modifier_enseignant' enseignant.id %}" class="btn btn-sm btn-warning">Modifier</a>
+                            <a href="{% url 'supprimer_enseignant' enseignant.id %}" class="btn btn-sm btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3">Aucun enseignant enregistré.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="mt-3">
+            <a href="{% url 'ajouter_enseignant' %}" class="btn btn-primary">Ajouter un enseignant</a>
+        </div>
+    </div>
+{% endblock %}

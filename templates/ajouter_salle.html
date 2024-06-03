@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Ajouter une salle{% endblock %}
+
+{% block salles_active %}active{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Ajouter une salle</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_numero">Numéro de la salle:</label>
+                {{ form.numero }}
+            </div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+
+        <div class="mt-3">
+            <a href="{% url 'liste_salles' %}" class="btn btn-secondary">Retour à la liste des salles</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
